@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sanhak.hrsurvey.dao.AdminLoginDao">
+   <resultMap type="com.sanhak.hrsurvey.domain.AdminLogin" id="MemberResultMap">
+        <result property="id" column="id"/>
+        <result property="pw" column="pw"/>
+   </resultMap>
+
+    <select id="getAdmin" resultMap="MemberResultMap">
+        SELECT * FROM admin
+    </select>
+</mapper>

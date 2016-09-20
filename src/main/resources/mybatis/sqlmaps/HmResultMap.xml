@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanhak.hrsurvey.dao.HmResultDao">
+	<resultMap type="com.sanhak.hrsurvey.domain.HmResultDto" id="HmResultDtoMap">
+		<result property="serialNo" column="Serial_No" />
+		<result property="HM1" column="HM_1" />
+		<result property="HM2" column="HM_2" />
+		<result property="HM3" column="HM_3" />
+		<result property="HM4" column="HM_4" />
+		<result property="HM5" column="HM_5" />
+		<result property="HM6" column="HM_6" />
+		<result property="HM7" column="HM_7" />
+		<result property="HM8" column="HM_8" />
+		<result property="HM9" column="HM_9" />
+		<result property="HM10" column="HM_10" />
+		<result property="HM11" column="HM_11" />
+		<result property="HM12" column="HM_12" />
+		<result property="HM13" column="HM_13" />
+		<result property="HM14" column="HM_14" />
+		<result property="HM15" column="HM_15" />
+		<result property="HMText1" column="HM_Text1" />
+		<result property="HMText2" column="HM_Text2" />
+		<result property="HMText3" column="HM_Text3" />
+	</resultMap>
+	<select id="showHmResult" resultMap="HmResultDtoMap">
+		SELECT * FROM hm_result
+	</select>
+</mapper>

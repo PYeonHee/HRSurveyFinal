@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sanhak.hrsurvey.domain.Excel">
+	<insert id="addExcel" parameterType="java.util.List">
+		INSERT INTO HireInfo VALUES
+		<!--INSERT INTO EXCEL_UPLOAD (SENDER, RECEIVER, DATE) VALUES -->
+		<foreach item="item" index="index" collection="list" separator=",">
+			(#{item.Serial_No}, #{item.BR_No}, #{item.Hire_Type},
+			#{item.ERBP},
+			#{item.NewHire_Date}, #{item.Hire_Manager_Name},
+			#{item.Hire_Manager_Band}, #{item.HM_ID}, #{item.New_Hire_Name},
+			#{item.New_Hire_Band}, #{item.New_Hire_ID},
+			#{item.Recruiter_Name},
+			#{item.Recruiter_Band},
+			#{item.Recruiter_ID})
+			<!-- (#{item.sender#, #{item.receiver#, now()) -->
+		</foreach>
+	</insert>
+</mapper>

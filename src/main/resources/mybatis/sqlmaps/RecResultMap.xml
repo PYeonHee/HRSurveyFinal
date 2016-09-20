@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanhak.hrsurvey.dao.RecResultDao">
+	<resultMap type="com.sanhak.hrsurvey.domain.RecResultDto" id="RecResultDtoMap">
+		<result property="serialNo" column="Serial_No" />
+		<result property="REC1" column="REC_1" />
+		<result property="REC2" column="REC_2" />
+		<result property="REC3" column="REC_3" />
+		<result property="REC4" column="REC_4" />
+		<result property="REC5" column="REC_5" />
+		<result property="REC6" column="REC_6" />
+		<result property="REC7" column="REC_7" />
+		<result property="REC8" column="REC_8" />
+		<result property="REC9" column="REC_9" />
+		<result property="REC10" column="REC_10" />
+		<result property="REC11" column="REC_11" />
+		<result property="REC12" column="REC_12" />
+		<result property="REC13" column="REC_13" />
+		<result property="REC14" column="REC_14" />
+		<result property="REC15" column="REC_15" />
+		<result property="REC_TEXT1" column="REC_TEXT1" />
+		<result property="REC_TEXT2" column="REC_TEXT2" />
+		<result property="REC_TEXT3" column="REC_TEXT3" />
+
+	</resultMap>
+	<select id="showRecResult" resultMap="RecResultDtoMap">
+		SELECT * FROM rec_result
+	</select>
+</mapper>

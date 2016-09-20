@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.sanhak.hrsurvey.dao.RecQuestionDao">
+<!-- namespace에서 interface로 정의된 DAO를 정확히 명시해주어야 한다 -->
+<resultMap type="com.sanhak.hrsurvey.domain.RecQKr" id="RecQKrMap">
+      <result property="recQNum" column="REC_Q_Num" />
+      <result property="recQKr" column="REC_Q_KR" />
+   </resultMap>
+   <select id="showRecQKr" resultMap="RecQKrMap">
+      SELECT * FROM rec_question_kr
+   </select>
+   <resultMap type="com.sanhak.hrsurvey.domain.RecQEn" id="RecQEnMap">
+      <result property="recQNum" column="REC_Q_Num" />
+      <result property="recQEn" column="REC_Q_EN" />
+   </resultMap>
+   <select id="showRecQEn" resultMap="RecQEnMap">
+      SELECT * FROM rec_question_en
+   </select>
+</mapper>

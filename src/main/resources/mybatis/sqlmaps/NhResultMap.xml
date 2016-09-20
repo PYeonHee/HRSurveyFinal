@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanhak.hrsurvey.dao.NhResultDao">
+	<resultMap type="com.sanhak.hrsurvey.domain.NhResultDto" id="NhResultDtoMap">
+		<result property="serialNo" column="Serial_No" />
+		<result property="NH1" column="NH_1" />
+		<result property="NH2" column="NH_2" />
+		<result property="NH3" column="NH_3" />
+		<result property="NH4" column="NH_4" />
+		<result property="NH5" column="NH_5" />
+		<result property="NH6" column="NH_6" />
+		<result property="NH7" column="NH_7" />
+		<result property="NH8" column="NH_8" />
+		<result property="NH9" column="NH_9" />
+		<result property="NH10" column="NH_10" />
+		<result property="NH11" column="NH_11" />
+		<result property="NH12" column="NH_12" />
+		<result property="NH13" column="NH_13" />
+		<result property="NH14" column="NH_14" />
+		<result property="NH15" column="NH_15" />
+		<result property="NHText1" column="NH_Text1" />
+		<result property="NHText2" column="NH_Text2" />
+		<result property="NHText3" column="NH_Text3" />
+
+	</resultMap>
+	<select id="showNhResult" resultMap="NhResultDtoMap">
+		SELECT * FROM nh_result
+	</select>
+</mapper>

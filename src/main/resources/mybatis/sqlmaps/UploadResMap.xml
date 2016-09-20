@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanhak.hrsurvey.dao.UploadResDao">
+   <resultMap type="com.sanhak.hrsurvey.domain.UploadResDto" id="UploadResDtoMap">
+      <result property="serialNo" column="Serial_No" />
+      <result property="BRNo" column="BR_No" />
+      <result property="hireType" column="Hire_Type" />
+      <result property="ERBP" column="ERBP" />
+      <result property="newHireDate" column="NewHire_Date" />
+      <result property="hireManagerName" column="HM_Name" />
+      <result property="hireManagerBand" column="HM_Band" />
+      <result property="HMID" column="HM_ID" />
+      <result property="newHireName" column="NH_Name" />
+      <result property="newHireBand" column="NH_Band" />
+      <result property="newHireID" column="NH_ID" />
+      <result property="recruiterName" column="Rec_Name" />
+      <result property="recruiterBand" column="Rec_Band" />
+      <result property="recruiterID" column="Rec_ID" />
+   </resultMap>
+   <select id="showUploadRes" resultMap="UploadResDtoMap">
+      SELECT * FROM HireInfo
+   </select>
+</mapper>
