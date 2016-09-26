@@ -30,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sanhak.hrsurvey.daoImpl.UploadDaoImpl;
 import com.sanhak.hrsurvey.domain.Excel;
+import com.sanhak.hrsurvey.domain.SurveyReminderDto;
 
 @Controller
 @RequestMapping("/fileUpload")
@@ -39,6 +40,7 @@ public class UploadController implements HandlerExceptionResolver {
 	private UploadDaoImpl iUploadService;
 
 	private static List<Excel> list = new ArrayList<Excel>();
+	private static List<SurveyReminderDto> list2 = new ArrayList<SurveyReminderDto>();
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String showForm(Excel excel, ModelMap model) {
@@ -52,13 +54,9 @@ public class UploadController implements HandlerExceptionResolver {
 		if (!result.hasErrors()) {
 			CommonsMultipartFile upfile = (CommonsMultipartFile) request.getFile("file");
 			excelFile.setFile(upfile);
-			System.out.println("excelfile : "+ excelFile.getFile());
-			System.out.println("upfile : "+ upfile.getName());
 			String filePath = System.getProperty("java.io.tmpdir") + upfile.getOriginalFilename();
-			System.out.println(filePath);
 			if (!upfile.isEmpty()) {
 				FileOutputStream outputStream = null;
-				System.out.println("second");
 
 				// save
 				outputStream = new FileOutputStream(new File(filePath));
@@ -86,14 +84,12 @@ public class UploadController implements HandlerExceptionResolver {
 						} else {
 							list.add(new Excel(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue(),
 									row.getCell(2).getStringCellValue(), row.getCell(3).getStringCellValue	(),
-									row.getCell(4).getDateCellValue(), row.getCell(5).getStringCellValue(),
+									row.getCell(4).getStringCellValue(), row.getCell(5).getStringCellValue(),
 									row.getCell(6).getStringCellValue(), row.getCell(7).getStringCellValue(),
 									row.getCell(8).getStringCellValue(), row.getCell(9).getStringCellValue(),
 									row.getCell(10).getStringCellValue(), row.getCell(11).getStringCellValue(),
 									row.getCell(12).getStringCellValue(), row.getCell(13).getStringCellValue()));
-							// list.add(new
-							// Excel(row.getCell(0).getStringCellValue(),
-							// row.getCell(1).getStringCellValue()));
+							list2.add(new SurveyReminderDto(row.getCell(4).getStringCellValue(),row.getCell(0).getStringCellValue(),row.getCell(5).getStringCellValue(),row.getCell(8).getStringCellValue(),row.getCell(11).getStringCellValue(),row.getCell(7).getStringCellValue(),row.getCell(10).getStringCellValue(),row.getCell(13).getStringCellValue()));
 						}
 						map.put(row.getCell(1).getStringCellValue(), row.getCell(0).getStringCellValue());
 
@@ -102,7 +98,8 @@ public class UploadController implements HandlerExceptionResolver {
 				file.close();
 
 				iUploadService.addExcel(list);
-
+				iUploadService.addReminder(list2);
+				
 				list.clear();
 
 				return "adminhome";
@@ -110,7 +107,7 @@ public class UploadController implements HandlerExceptionResolver {
 		}
 		return "FileUploadForm";
 	}
-
+	
 	@Override
 	public ModelAndView resolveException(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2,
 			Exception exception) {

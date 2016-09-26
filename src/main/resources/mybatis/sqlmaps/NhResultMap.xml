@@ -28,4 +28,8 @@
 	<select id="showNhResult" resultMap="NhResultDtoMap">
 		SELECT * FROM nh_result
 	</select>
+	
+	<select id="showNhDateResult" resultMap="NhResultDtoMap" parameterType="com.sanhak.hrsurvey.domain.NhResultDateDto">
+       SELECT * FROM nh_result nh where (select newhire_date from hireinfo, nh_result where hireinfo.serial_no = nh_result.serial_no) between #{fDate} and #{tDate};
+    </select>
 </mapper>

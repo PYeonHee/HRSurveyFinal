@@ -35,4 +35,45 @@ public class NhQuestionDaoImpl implements NhQuestionDao {
       return nhQDao.showNhQEn();
    }
 
+   @Override
+	public void delNhQKr() {
+		// TODO Auto-generated method stub
+		sqlSession.delete("delNhQKr");
+	}
+   
+   @Override
+	public void delNhQEn() {
+		// TODO Auto-generated method stub
+		sqlSession.delete("delNhQEn");
+	}
+
+	@Override
+	public void insertNhQKr(List<NhQKr> nhq) {
+		// TODO Auto-generated method stub
+		nhQDao = sqlSession.getMapper(NhQuestionDao.class);
+		nhQDao.insertNhQKr(nhq);
+	}
+	
+	@Override
+	public void insertNhQEn(List<NhQEn> nhq) {
+		// TODO Auto-generated method stub
+		nhQDao = sqlSession.getMapper(NhQuestionDao.class);
+		nhQDao.insertNhQEn(nhq);
+	}
+
+	@Override
+	public int cntNhQKr() {
+		// TODO Auto-generated method stub
+		nhQDao = sqlSession.getMapper(NhQuestionDao.class);
+		return nhQDao.cntNhQKr();
+	}
+	
+	@Override
+	public int cntNhQEn() {
+		// TODO Auto-generated method stub
+		nhQDao = sqlSession.getMapper(NhQuestionDao.class);
+		return nhQDao.cntNhQEn();
+	}
+
+
 }

@@ -11,12 +11,12 @@ public class AppInitializer extends
     @Override
     protected Class<?>[] getRootConfigClasses() {
         // TODO Auto-generated method stub
-    	return new Class<?>[]{ ModuleConfig.class };
+    	return null;
     }
  
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[] { AppConfig.class };
+        return new Class<?>[] { AppConfig.class, ModuleConfig.class, MailConfig.class };
     }
  
     @Override
@@ -30,7 +30,7 @@ public class AppInitializer extends
      
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/" };
+        return new String[] { "/"};
     }
  
 }

@@ -9,34 +9,52 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+
+th, td {
+    border: 1px solid black;
+  }</style>
 <title>Excel Upload View</title>
 </head>
 <body>
-
-<h2>엑셀 업로드 목록</h2>
+<jsp:include page="Header.jsp" flush="true" />
+<div class="container-fluid text-center">
+      <div class="row content">
+<div class="form-group col-sm-12 col-md-12 text-center" >
+<h2>Uploaded List</h2>
 <table style="border:1px solid #ccc">
     <colgroup>
-        <col width="2%"/>
-        <col width="*"/>
-        <col width="3%"/>
-        <col width="4%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
+        <col width="7%"/>
     </colgroup>
     <thead>
         <tr>
-            <th scope="col">Serial_No</th>
-            <th scope="col">BR_No</th>
-            <th scope="col">Hire_Type</th>
-            <th scope="col">ERBP</th>
-            <th scope="col">NewHire_Date</th>
-            <th scope="col">Hire_Manager_Name</th>
-            <th scope="col">Hire_Manager_Band</th>
-            <th scope="col">HM_ID</th>
-            <th scope="col">New_Hire_Name</th>
-            <th scope="col">New_Hire_Band</th>
-            <th scope="col">New_Hire_ID</th>
-            <th scope="col">Recruiter_Name</th>
-            <th scope="col">Recruiter_Band</th>
-            <th scope="col">Recruiter_ID</th>
+            <th scope="col" style="text-align:center;">Serial No.</th>
+            <th scope="col" style="text-align:center;">BR No.</th>
+            <th scope="col" style="text-align:center;">Hire Type</th>
+            <th scope="col" style="text-align:center;">ERBP</th>
+            <th scope="col" style="text-align:center;">NewHire Date</th>
+            <th scope="col" style="text-align:center;">Hire Manager Name</th>
+            <th scope="col" style="text-align:center;">Hire_Manager Band</th>
+            <th scope="col" style="text-align:center;">Hire Manager ID</th>
+            <th scope="col" style="text-align:center;">New Hire Name</th>
+            <th scope="col" style="text-align:center;">New Hire Band</th>
+            <th scope="col" style="text-align:center;">New Hire ID</th>
+            <th scope="col" style="text-align:center;">Recruiter Name</th>
+            <th scope="col" style="text-align:center;">Recruiter Band</th>
+            <th scope="col" style="text-align:center;">Recruiter ID</th>
         </tr>
     </thead>
     
@@ -44,7 +62,7 @@
         <c:choose>
             <c:when test="${fn:length(uploadRes) > 0}">
                 <c:forEach items="${uploadRes }" var="uploadRes">
-                    <tr>
+                    <tr style="text-align:center;">
                         <td>${uploadRes.serialNo }</td>
                         <td>${uploadRes.BRNo }</td>
                         <td>${uploadRes.hireType }</td>
@@ -64,13 +82,15 @@
             </c:when>
             <c:otherwise>
                 <tr>
-                    <td colspan="4">조회된 결과가 없습니다.</td>
+                    <td colspan="4">No Result.</td>
                 </tr>
             </c:otherwise>
         </c:choose>
          
     </tbody>
 </table>
-
+</div>
+</div>
+</div>
 </body>
 </html>

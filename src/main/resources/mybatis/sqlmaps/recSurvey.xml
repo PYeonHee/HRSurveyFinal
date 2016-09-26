@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sanhak.hrsurvey.dao.RecSurveyDao">
    <insert id="recSrvyInsert" parameterType="com.sanhak.hrsurvey.domain.RecResultDto">
-      INSERT INTO REC_RESULT(Serial_No, REC_1, REC_2, REC_3, REC_4, REC_5, REC_6, REC_7, REC_8, REC_9, REC_10, REC_Text1, REC_Text2, REC_Text3, REC_Text4) 
-      VALUES("131172", #{REC1}, #{REC2}, #{REC3}, #{REC4}, #{REC5}, #{REC6}, #{REC7}, #{REC8}, #{REC9}, #{REC10}, #{REC_TEXT1}, #{REC_TEXT2}, #{REC_TEXT3}, #{REC_TEXT4})
+      INSERT INTO rec_result(Serial_No, REC_1, REC_2, REC_3, REC_4, REC_5, REC_6, REC_7, REC_8, REC_9, REC_10, REC_11, REC_12, REC_13, REC_14, REC_15, REC_Text1, REC_Text2) 
+      VALUES(#{serialNo}, #{REC1}, #{REC2}, #{REC3}, #{REC4}, #{REC5}, #{REC6}, #{REC7}, #{REC8}, #{REC9}, #{REC10}, #{REC11}, #{REC12}, #{REC13}, #{REC14}, #{REC15}, #{REC_TEXT1}, #{REC_TEXT2})
    </insert><!-- #{serialNo} -->
 </mapper>

@@ -3,24 +3,47 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sanhak.hrsurvey.dao.HmQuestionDao">
-   <!-- namespace에서 interface로 정의된 DAO를 정확히 명시해주어야 한다 -->
-   <resultMap type="com.sanhak.hrsurvey.domain.HmQKr" id="HmQKrMap">
-      <result property="hmQNum" column="HM_Q_Num" />
-      <result property="hmQKr" column="HM_Q_KR" />
-   </resultMap>
-   <select id="showHmQKr" resultMap="HmQKrMap">
-      SELECT * FROM hm_question_kr
-   </select>
-   <resultMap type="com.sanhak.hrsurvey.domain.HmQEn" id="HmQEnMap">
-      <result property="hmQNum" column="HM_Q_Num" />
-      <result property="hmQEn" column="HM_Q_EN" />
-   </resultMap>
-   <select id="showHmQEn" resultMap="HmQEnMap">
-      SELECT * FROM hm_question_en
-   </select>
-   <insert id="HmQuestionInsert" parameterType="com.sanhak.hrsurvey.domain.HmQuestion">
-      INSERT INTO
-      HM_QUESTION (hm_q_num,hm_q_kr,hm_q_en)
-      VALUES (11,#{hmQKr},"aaa");
-   </insert>
+	<!-- namespace에서 interface로 정의된 DAO를 정확히 명시해주어야 한다 -->
+	<resultMap type="com.sanhak.hrsurvey.domain.HmQKr" id="HmQKrMap">
+		<result property="hmQNum" column="HM_Q_Num" />
+		<result property="hmQKr" column="HM_Q_KR" />
+		<result property="hmQType" column="HM_Q_Type" />
+	</resultMap>
+	<select id="showHmQKr" resultMap="HmQKrMap">
+		SELECT * FROM hm_question_kr
+	</select>
+	<select id="cntHmQKr" resultType="int">
+		SELECT COUNT(*) FROM
+		hm_question_kr
+	</select>
+	<select id="cntHmQEn" resultType="int">
+		SELECT COUNT(*) FROM hm_question_en
+	</select>
+
+	<resultMap type="com.sanhak.hrsurvey.domain.HmQEn" id="HmQEnMap">
+		<result property="hmQNum" column="HM_Q_Num" />
+		<result property="hmQEn" column="HM_Q_EN" />
+		<result property="hmQType" column="HM_Q_Type" />
+	</resultMap>
+	<select id="showHmQEn" resultMap="HmQEnMap">
+		SELECT * FROM hm_question_en
+	</select>
+	<delete id="delHmQKr">
+		DELETE FROM hm_question_kr
+	</delete>
+	<delete id="delHmQEn">
+		DELETE FROM hm_question_en
+	</delete>
+
+	<insert id="insertHmQKr" parameterType="java.util.List">
+		INSERT INTO hm_question_kr VALUES
+		<foreach item="item" index="index" collection="list"
+			separator=",">(#{item.hmQNum}, #{item.hmQKr}, #{item.hmQType})</foreach>
+	</insert>
+	<insert id="insertHmQEn" parameterType="java.util.List">
+		INSERT INTO hm_question_en VALUES
+		<foreach item="item" index="index" collection="list"
+			separator=",">(#{item.hmQNum}, #{item.hmQEn}, #{item.hmQType})</foreach>
+	</insert>
+
 </mapper>

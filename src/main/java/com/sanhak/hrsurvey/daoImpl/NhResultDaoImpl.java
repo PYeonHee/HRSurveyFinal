@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sanhak.hrsurvey.dao.NhResultDao;
+import com.sanhak.hrsurvey.domain.NhResultDateDto;
 import com.sanhak.hrsurvey.domain.NhResultDto;
 
 @Repository("NhResultDao")
@@ -25,5 +26,12 @@ public class NhResultDaoImpl implements NhResultDao {
 		nhResultDao = sqlSession.getMapper(NhResultDao.class);
 		return nhResultDao.showNhResult();
 	}
+	
+	@Override
+	   public List<NhResultDto> showNhDateResult(NhResultDateDto dto) {
+	      // TODO Auto-generated method stub
+	      NhResultDao nhResultDao = sqlSession.getMapper(NhResultDao.class);
+	      return nhResultDao.showNhDateResult(dto);
+	   }
 
 }

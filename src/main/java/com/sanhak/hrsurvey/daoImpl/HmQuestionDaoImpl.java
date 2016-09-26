@@ -20,7 +20,7 @@ public class HmQuestionDaoImpl implements HmQuestionDao {
     public void setSqlSession(SqlSession sqlSession){
         this.sqlSession = sqlSession;
     }
-
+   
    @Override
    public List<HmQKr> showHmQKr() {
       // TODO Auto-generated method stub
@@ -34,4 +34,45 @@ public class HmQuestionDaoImpl implements HmQuestionDao {
       hmQDao = sqlSession.getMapper(HmQuestionDao.class);
       return hmQDao.showHmQEn();
    }
+
+   @Override
+	public void delHmQKr() {
+		// TODO Auto-generated method stub
+		sqlSession.delete("delHmQKr");
+	}
+   
+   @Override
+	public void delHmQEn() {
+		// TODO Auto-generated method stub
+		sqlSession.delete("delHmQEn");
+	}
+
+	@Override
+	public void insertHmQKr(List<HmQKr> hmq) {
+		// TODO Auto-generated method stub
+		hmQDao = sqlSession.getMapper(HmQuestionDao.class);
+		hmQDao.insertHmQKr(hmq);
+	}
+	
+	@Override
+	public void insertHmQEn(List<HmQEn> hmq) {
+		// TODO Auto-generated method stub
+		hmQDao = sqlSession.getMapper(HmQuestionDao.class);
+		hmQDao.insertHmQEn(hmq);
+	}
+
+	@Override
+	public int cntHmQKr() {
+		// TODO Auto-generated method stub
+		hmQDao = sqlSession.getMapper(HmQuestionDao.class);
+		return hmQDao.cntHmQKr();
+	}
+	
+	@Override
+	public int cntHmQEn() {
+		// TODO Auto-generated method stub
+		hmQDao = sqlSession.getMapper(HmQuestionDao.class);
+		return hmQDao.cntHmQEn();
+	}
+
 }

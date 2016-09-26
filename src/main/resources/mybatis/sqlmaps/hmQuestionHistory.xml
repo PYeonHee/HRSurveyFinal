@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sanhak.hrsurvey.dao.HmQuestionHistoryDao">
+<!-- namespace에서 interface로 정의된 DAO를 정확히 명시해주어야 한다 -->
+
+<resultMap type="com.sanhak.hrsurvey.domain.HmQuestionHistory" id="HmQHistoryMap">
+   <result property="ModDate" column="ModDate" />
+   <result property="Version" column="Version" />
+   <result property="KR_Q_1" column="KR_Q_1" />
+   <result property="KR_Q_2" column="KR_Q_2" />
+   <result property="KR_Q_3" column="KR_Q_3" />
+   <result property="KR_Q_4" column="KR_Q_4" />
+   <result property="KR_Q_5" column="KR_Q_5" />
+   <result property="KR_Q_6" column="KR_Q_6" />
+   <result property="KR_Q_7" column="KR_Q_7" />
+   <result property="KR_Q_8" column="KR_Q_8" />
+   <result property="KR_Q_9" column="KR_Q_9" />
+   <result property="KR_Q_10" column="KR_Q_10" />
+   <result property="KR_Q_11" column="KR_Q_11" />
+   <result property="KR_Q_12" column="KR_Q_12" />
+   <result property="KR_Q_13" column="KR_Q_13" />
+   <result property="KR_Q_14" column="KR_Q_14" />
+   <result property="KR_Q_15" column="KR_Q_15" />
+   <result property="EN_Q_1" column="EN_Q_1" />
+   <result property="EN_Q_2" column="EN_Q_2" />
+   <result property="EN_Q_3" column="EN_Q_3" />
+   <result property="EN_Q_4" column="EN_Q_4" />
+   <result property="EN_Q_5" column="EN_Q_5" />
+   <result property="EN_Q_6" column="EN_Q_6" />
+   <result property="EN_Q_7" column="EN_Q_7" />
+   <result property="EN_Q_8" column="EN_Q_8" />
+   <result property="EN_Q_9" column="EN_Q_9" />
+   <result property="EN_Q_10" column="EN_Q_10" />
+   <result property="EN_Q_11" column="EN_Q_11" />
+   <result property="EN_Q_12" column="EN_Q_12" />
+   <result property="EN_Q_13" column="EN_Q_13" />
+   <result property="EN_Q_14" column="EN_Q_14" />
+   <result property="EN_Q_15" column="EN_Q_15" />
+</resultMap>
+
+<select id="showHmQhistory" resultMap="HmQHistoryMap">
+      SELECT * FROM hm_question_history
+   </select>
+  <select id="searchHistoryByVersion" resultMap="HmQHistoryMap">
+      SELECT * FROM hm_question_history WHERE (Version = #{idx})
+   </select>
+<select id="getMaxVersion" resultType="String">
+      SELECT MAX(CAST(Version AS DECIMAL)) FROM hm_question_history
+</select>   
+   
+<insert id="insertHmQHist" parameterType="com.sanhak.hrsurvey.domain.HmQuestionHistory">
+      INSERT INTO hm_question_history VALUES(#{ModDate}, #{Version}, #{KR_Q_1}, #{KR_Q_2}, #{KR_Q_3}, #{KR_Q_4}, #{KR_Q_5}, #{KR_Q_6}, #{KR_Q_7}, #{KR_Q_8}, #{KR_Q_9}, #{KR_Q_10}, #{KR_Q_11}, #{KR_Q_12}, #{KR_Q_13}, #{KR_Q_14}, #{KR_Q_15}, #{EN_Q_1}, #{EN_Q_2}, #{EN_Q_3}, #{EN_Q_4}, #{EN_Q_5}, #{EN_Q_6}, #{EN_Q_7}, #{EN_Q_8}, #{EN_Q_9}, #{EN_Q_10}, #{EN_Q_11}, #{EN_Q_12}, #{EN_Q_13}, #{EN_Q_14}, #{EN_Q_15})
+</insert>
+
+</mapper>

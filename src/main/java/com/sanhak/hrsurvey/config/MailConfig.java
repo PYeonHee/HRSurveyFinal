@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
-@ImportResource("classpath:emailTesting/email-context.xml")
+@ImportResource("classpath:mailing/ScheduledMail.xml")
 public class MailConfig {
 
 }

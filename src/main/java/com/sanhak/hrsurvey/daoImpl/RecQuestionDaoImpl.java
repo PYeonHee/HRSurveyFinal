@@ -35,4 +35,44 @@ public class RecQuestionDaoImpl implements RecQuestionDao {
       return recQDao.showRecQEn();
    }
 
+   @Override
+	public void delRecQKr() {
+		// TODO Auto-generated method stub
+		sqlSession.delete("delRecQKr");
+	}
+   
+   @Override
+	public void delRecQEn() {
+		// TODO Auto-generated method stub
+		sqlSession.delete("delRecQEn");
+	}
+
+	@Override
+	public void insertRecQKr(List<RecQKr> recq) {
+		// TODO Auto-generated method stub
+		recQDao = sqlSession.getMapper(RecQuestionDao.class);
+		recQDao.insertRecQKr(recq);
+	}
+	
+	@Override
+	public void insertRecQEn(List<RecQEn> recq) {
+		// TODO Auto-generated method stub
+		recQDao = sqlSession.getMapper(RecQuestionDao.class);
+		recQDao.insertRecQEn(recq);
+	}
+
+	@Override
+	public int cntRecQKr() {
+		// TODO Auto-generated method stub
+		recQDao = sqlSession.getMapper(RecQuestionDao.class);
+		return recQDao.cntRecQKr();
+	}
+	
+	@Override
+	public int cntRecQEn() {
+		// TODO Auto-generated method stub
+		recQDao = sqlSession.getMapper(RecQuestionDao.class);
+		return recQDao.cntRecQEn();
+	}
+
 }

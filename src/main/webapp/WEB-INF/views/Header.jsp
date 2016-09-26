@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +14,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 <style>
 #other-text1 {
 	height: 30px;
@@ -63,7 +71,44 @@ input[type=submit] {
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
-	height: 100%
+	height: 100%;
+}
+
+.navbar-default {
+	color: #325C80;
+	background-color: #325C80;
+}
+
+.navbar-default .nav>li>a, .navbar .nav>li>a {
+	color: white;
+	text-shadow: white;
+}
+
+a {
+	color: #325C80;
+	text-decoration: none;
+}
+
+.dropdown-menu>li>a {
+	color: blue;
+	background: yellow;
+	border-bottom: 2px solid green;
+}
+
+.navbar-default .nav>li>a:active, .navbar .nav>li>a:active:first-letter,
+	.navbar-default .nav>li.current-menu-item>a, .navbar-default .nav>li.current-menu-ancestor>a,
+	.navbar-default .nav>li.current-menu-item>a:first-letter,
+	.navbar-default .nav>li.current-menu-ancestor>a:first-letter {
+	color: red;
+	text-shadow: red;
+}
+
+a.no-uline {
+	text-decoration: none
+}
+
+body {
+	background-color: #f9f9ec !important;
 }
 
 /* Set gray background color and 100% height */
@@ -99,104 +144,102 @@ footer {
 		});
 	});
 </script>
-
-<title>Insert title here</title>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-top">
+	<nav class="navbar navbar-default navbar-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#">IBM HR</a>
+		<form id="HomeList" name="HomeList" action="Home" method="post">
+			<a class="navbar-brand" onclick="document.HomeList.submit()"><img
+				src="<%=request.getContextPath()%>/resources/images/logo.png"
+				style="width: 80px; height: 30px; margin: 0px;" border="0"/></a>
+		</form>
 		<ul class="nav navbar-nav">
-			<li class="nav-item active"><a class="nav-link" href="adminhome">Home 
-			<span class="sr-only">(current)</span>
-			</a></li>
-<!-- 
 			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#">설문항목 조회 <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><form id="viewhmQ" name="viewhmQ" action="HmQuestionKr"
-							method="post">
-							<a href="#" onclick="document.viewhmQ.submit()">Hiring
-								Manager</a>
-						</form></li>
-					<li><form id="viewnhQ" name="viewnhQ" action="NhQuestionKr"
-							method="post">
-							<a href="#" onclick="document.viewnhQ.submit()">New Hire</a>
-						</form></li>
-					<li><form id="viewrecQ" name="viewrecQ" action="RecQuestionKr"
-							method="post">
-							<a href="#" onclick="document.viewrecQ.submit()">Recruiter</a>
-						</form></li>
-				</ul></li> -->
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#">국문 설문수정 <span class="caret"></span></a>
-				<ul class="dropdown-menu">
+				data-toggle="dropdown" href="#">Modify Survey Question <span
+					class="caret"></span></a>
+				<ul class="dropdown-menu" style="width: 196px;">
 					<li><form id="hmQ" name="hmQ" action="hmQAct" method="POST">
-							<a href="#" onclick="document.hmQ.submit()">Hiring Manager</a>
+							<a href="#" onclick="document.hmQ.submit()" class="no-uline">Hiring
+								Manager</a>
 						</form></li>
 					<li><form id="nhQ" name="nhQ" action="nhQAct" method="POST">
-							<a href="#" onclick="document.nhQ.submit()">NewHire</a>
+							<a href="#" onclick="document.nhQ.submit()" class="no-uline">New
+								Hire</a>
 						</form></li>
 					<li><form id="recQ" name="recQ" action="recQAct" method="POST">
-							<a href="#" onclick="document.recQ.submit()">Recruiter</a>
+							<a href="#" onclick="document.recQ.submit()" class="no-uline">Recruiter</a>
 						</form></li>
 				</ul></li>
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#">영문 설문수정 <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><form id="hmEnQ" name="hmEnQ" action="hmEnQAct"
-							method="POST">
-							<a href="#" onclick="document.hmEnQ.submit()">Hiring Manager</a>
-						</form></li>
-					<li><form id="nhEnQ" name="nhEnQ" action="nhEnQAct"
-							method="POST">
-							<a href="#" onclick="document.nhEnQ.submit()">NewHire</a>
-						</form></li>
-					<li><form id="recEnQ" name="recEnQ" action="recEnQAct"
-							method="POST">
-							<a href="#" onclick="document.recEnQ.submit()">Recruiter</a>
-						</form></li>
-				</ul></li>
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#">결과조회 <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><form id="ViewHmResult" name="ViewHmResult" action="ViewHmResult"
-							method="POST">
-							<a href="#" onclick="document.ViewHmResult.submit()">Hiring
-								Manager</a>
-						</form></li>
-					<li><form id="ViewNhResult" name="ViewNhResult" action="ViewNhResult"
-							method="POST">
-							<a href="#" onclick="document.ViewNhResult.submit()">New Hire</a>
-						</form></li>
-					<li><form id="ViewRecResult" name="ViewRecResult" action="ViewRecResult"
-							method="POST">
-							<a href="#" onclick="document.ViewRecResult.submit()">Recruiter</a>
-						</form></li>
-					<li class="nav-item"><form id="download" name="download"
-						action="DownExcel" method="POST">
-						<a class="nav-link" href="#" onclick="document.download.submit()">결과
-							다운로드</a>
-					</form></li>
-				</ul></li>
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#">명단 업로드 <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li class="nav-item"><form id="upload" name="upload"
-							action="fileUpload" method="get">
-							<a class="nav-link" href="#" onclick="document.upload.submit()">명단	업로드</a>
-					</form></li>
 
-					<li class="nav-item">
-					<form id="result" name="result" action="ViewUploadRes" method="POST">
-						<a class="nav-link" href="#" onclick="document.result.submit()">업로드된 명단</a>
-					</form>
+			<li class="dropdown"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#">Total Survey Result <span
+					class="caret"></span></a>
+				<ul class="dropdown-menu" style="width: 165px;">
+					<li><form id="ViewHmResult" name="ViewHmResult"
+							action="ViewHmResult" method="POST">
+							<a href="#" onclick="document.ViewHmResult.submit()"
+								class="no-uline">Hiring Manager</a>
+						</form></li>
+					<li><form id="ViewNhResult" name="ViewNhResult"
+							action="ViewNhResult" method="POST">
+							<a href="#" onclick="document.ViewNhResult.submit()"
+								class="no-uline">New Hire</a>
+						</form></li>
+					<li><form id="ViewRecResult" name="ViewRecResult"
+							action="ViewRecResult" method="POST">
+							<a href="#" onclick="document.ViewRecResult.submit()"
+								class="no-uline">Recruiter</a>
+						</form></li>
+					<li><form id="download" name="download"
+							action="DownResultExcel" method="POST">
+							<a href="#" onclick="document.download.submit()" class="no-uline">Download
+								Result</a>
+						</form></li>
+					<li><form id="reminder" name="reminder"
+							action="SurveyReminder" method="POST">
+							<a href="#" onclick="document.reminder.submit()" class="no-uline">Unsurveyed
+								List</a>
+						</form></li>
+				</ul></li>
+
+			<li class="dropdown"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#">Survey List Upload <span
+					class="caret"></span></a>
+				<ul class="dropdown-menu" style="width: 165px;">
+					<li class="nav-item"><form id="down" name="down"
+							action="DownFormExcel" method="post">
+							<a href="#" onclick="document.down.submit()" class="no-uline">
+								Download Form </a>
+						</form></li>
+					<li><form id="upload" name="upload" action="fileUpload"
+							method="get">
+							<a href="#" onclick="document.upload.submit()" class="no-uline">Upload
+								List</a>
+						</form></li>
+
+					<li>
+						<form id="result" name="result" action="ViewUploadRes"
+							method="POST">
+							<a href="#" onclick="document.result.submit()" class="no-uline">Uploaded
+								List</a>
+						</form>
+					</li>
+				</ul></li>
+			<li class="dropdown"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#">Question Version Management <span
+					class="caret"></span></a>
+				<ul class="dropdown-menu" style="width: 242px;">
+					<li><form id="history" name="history" action="viewHistory"
+							method="get">
+							<a href="#" onclick="document.history.submit()" class="no-uline">View
+								History</a>
+						</form></li>
 				</ul></li>
 
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="logout.do"><span class="glyphicon glyphicon-log-out"></span>
-					Logout</a></li>
+			<li><a href="logout.do"><span
+					class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 		</ul>
 	</div>
 	</nav>

@@ -54,17 +54,19 @@
 						</div>
 						<div class="form-group"></div>
 					</form>	
-					
-					
-					<li><form id="viewhmQ" name="viewhmQ" action="HmQuestionKr" method="post"><!--  -->
-							<a href="#" onclick="document.viewhmQ.submit()">Hiring	Manager</a>
-						</form></li>
-					<li><form id="viewnhQ" name="viewnhQ" action="NhQuestionKr" method="post">
-							<a href="#" onclick="document.viewnhQ.submit()">New Hire</a>
-						</form></li>
-					<li><form id="viewrecQ" name="viewrecQ" action="RecQuestionKr" method="post">
-							<a href="#" onclick="document.viewrecQ.submit()">Recruiter</a>
-						</form></li>
+					<ul><li>
+							<a href="HmQuestion?lang=1">Hiring	Manager</a>
+							</li><li>
+							<a href="NhQuestion?lang=1">New Hire</a>
+							</li><li>
+							<a href="RecQuestion?lang=1">Recruiter</a>
+							</li><li>
+							<a href="MHmQuestion?lang=1">Mobile Hiring	Manager</a>
+							</li><li>
+							<a href="MNhQuestion?lang=1">Mobile New Hire</a>
+							</li><li>
+							<a href="MRecQuestion?lang=1">Mobile Recruiter</a>
+							</ul>
 				</div>
 			</div>
 		</div>

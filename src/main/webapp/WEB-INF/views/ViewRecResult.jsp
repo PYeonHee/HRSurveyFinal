@@ -8,19 +8,67 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style> th, td {
+    border: 1px solid #bcbcbc;
+  }</style>
 <title>Rec Result View</title>
 </head>
 <body>
 
+<jsp:include page="Header.jsp" flush="true" />
+      <div class="form-group"> <!-- Date input -->
+      <form id="pickdate" name="pickdate" action="hmpickDate" method="post">
+        <label class="control-label" for="date">Date</label>
+        <input  id="fdate" name="fdate" placeholder="YYYY/MM/DD" type="text"/>
+        <input  id="tdate" name="tdate" placeholder="YYYY/MM/DD" type="text"/>
+        <input type="submit" value="검색"></form>
+      </div>
+   
+     
+      <script>
+    $(document).ready(function(){
+      var fdate_input=$('input[name="fdate"]'); //our date input has the name "date"
+      var tdate_input=$('input[name="tdate"]'); 
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'yyyy/mm/dd',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+        orientation : "bottom right",
+           todayBtn: true
+      };
+      fdate_input.datepicker(options);
+      tdate_input.datepicker(options);
+      
+    });
+</script>
+<div class="container-fluid text-center">
+		<div class="row content">
+<div class="form-group col-sm-12 col-md-12 text-left">
 
-
-<h2>Recruiter Survey 목록</h2>
-<table style="border:1px solid #ccc">
+<h2>Recruiter Survey 결과</h2>
+<table width="1550" style="border:1px solid #ccc ;table-layout:fixed; word-break:break-all;" height="auto" >
     <colgroup>
+       <col width="5%"/>
         <col width="2%"/>
-        <col width="*"/>
-        <col width="3%"/>
-        <col width="4%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="2%"/>
+        <col width="8%"/>
+        <col width="8%"/>
+        <col width="8%"/>
     </colgroup>
     <thead>
         <tr>
@@ -83,7 +131,10 @@
     </tbody>
 </table>
 
-
+</div>
+</div>
+</div>
+<jsp:include page="Footer.jsp" flush="true" />
 
 </body>
 </html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanhak.hrsurvey.dao.SurveyReminderDao">
+   <resultMap type="com.sanhak.hrsurvey.domain.SurveyReminderDto" id="SurveyReminderDtoMap">
+      <result property="newHireDate" column="newHireDate" />
+      <result property="serialNo" column="serialNo" />
+      <result property="hiringManagerName" column="hiringManagerName" />
+      <result property="newHireName" column="newHireName" />
+      <result property="recruiterName" column="recruiterName" />
+      <result property="hiringManagerID" column="hiringManagerID" />
+      <result property="newHireID" column="newHireID" />
+      <result property="recruiterID" column="recruiterID" />
+   </resultMap>
+   <select id="showList" resultType="com.sanhak.hrsurvey.domain.SurveyReminderDto">
+      SELECT * FROM surveyreminder
+   </select>
+   
+   <select id="listForMail" resultMap="SurveyReminderDtoMap">
+   <![CDATA[ 
+      SELECT * FROM surveyreminder WHERE newHireDate <= date_sub(CURRENT_DATE(), INTERVAL 30 DAY) AND mailDateHM is null
+   ]]>
+   </select>
+   
+   <select id="getInfo_NH" resultMap="SurveyReminderDtoMap" parameterType="String">
+   		SELECT newHireDate, serialNo, newHireName, newHireID
+   		FROM surveyreminder
+   		WHERE serialNo=#{serialNo}
+   </select>
+   <select id="getInfo_HM" resultMap="SurveyReminderDtoMap" parameterType="String">
+   		SELECT newHireDate, serialNo, newHireName, hiringManagerName, hiringManagerID
+   		FROM surveyreminder
+   		WHERE serialNo=#{serialNo}
+   </select>
+   <select id="getInfo_REC" resultMap="SurveyReminderDtoMap" parameterType="String">
+   		SELECT newHireDate, serialNo, newHireName,recruiterName, recruiterID
+   		FROM surveyreminder
+   		WHERE serialNo=#{serialNo}
+   </select>
+      <insert id="insertMailHM"  parameterType="String">
+      UPDATE surveyreminder SET mailDateHM = CURRENT_DATE() where serialNo = #{serialNo}
+   </insert>
+   <insert id="insertMailNH"  parameterType="String">
+      UPDATE surveyreminder SET mailDateNH = CURRENT_DATE() where serialNo = #{serialNo}
+   </insert>
+   <insert id="insertMailREC"  parameterType="String">
+      UPDATE surveyreminder SET mailDateREC = CURRENT_DATE() where serialNo = #{serialNo}
+   </insert>
+   <insert id="resultCheckHM"  parameterType="String">
+      UPDATE surveyreminder SET resultCheckHM = 'Y' where serialNo = #{serialNo}
+   </insert>
+   <insert id="resultCheckNH"  parameterType="String">
+      UPDATE surveyreminder SET resultCheckNH = 'Y' where serialNo = #{serialNo}
+   </insert>
+   <insert id="resultCheckREC"  parameterType="String">
+      UPDATE surveyreminder SET resultCheckREC = 'Y' where serialNo = #{serialNo}
+   </insert>
+</mapper>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sanhak.hrsurvey.dao.HmSurveyDao">
    <insert id="hmSrvyInsert" parameterType="com.sanhak.hrsurvey.domain.HmResultDto">
-      INSERT INTO HM_RESULT(Serial_No, HM_1, HM_2, HM_3, HM_4, HM_5, HM_6, HM_7, HM_8, HM_9, HM_10) 
-      VALUES("131172", #{HM1}, #{HM2}, #{HM3}, #{HM4}, #{HM5}, #{HM6}, #{HM7}, #{HM8}, #{HM9}, #{HM10})
+      INSERT INTO hm_result(Serial_No, HM_1, HM_2, HM_3, HM_4, HM_5, HM_6, HM_7, HM_8, HM_9, HM_10, HM_11, HM_12, HM_13, HM_14, HM_15) 
+      VALUES(#{serialNo}, #{HM1}, #{HM2}, #{HM3}, #{HM4}, #{HM5}, #{HM6}, #{HM7}, #{HM8}, #{HM9}, #{HM10}, #{HM11}, #{HM12}, #{HM13}, #{HM14}, #{HM15})
    </insert>
  </mapper>

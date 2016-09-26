@@ -6,7 +6,8 @@
 	<insert id="addExcel" parameterType="java.util.List">
 		INSERT INTO HireInfo VALUES
 		<!--INSERT INTO EXCEL_UPLOAD (SENDER, RECEIVER, DATE) VALUES -->
-		<foreach item="item" index="index" collection="list" separator=",">
+		<foreach item="item" index="index" collection="list"
+			separator=",">
 			(#{item.Serial_No}, #{item.BR_No}, #{item.Hire_Type},
 			#{item.ERBP},
 			#{item.NewHire_Date}, #{item.Hire_Manager_Name},
@@ -16,6 +17,23 @@
 			#{item.Recruiter_Band},
 			#{item.Recruiter_ID})
 			<!-- (#{item.sender#, #{item.receiver#, now()) -->
+		</foreach>
+	</insert>
+	<insert id="addReminder" parameterType="java.util.List">
+		INSERT INTO surveyreminder VALUES
+		<foreach item="item" index="index" collection="list"
+			separator=",">
+			(#{item.newHireDate}, #{item.serialNo},
+			#{item.newHireName},
+			#{item.hiringManagerName},
+			#{item.recruiterName},
+			#{item.newHireID},
+			#{item.hiringManagerID},
+			#{item.recruiterID},
+			#{item.mailDateNH},
+			#{item.mailDateHM}, #{item.mailDateREC},
+			#{item.resultCheckHM},
+			#{item.resultCheckNH}, #{item.resultCheckREC})
 		</foreach>
 	</insert>
 </mapper>

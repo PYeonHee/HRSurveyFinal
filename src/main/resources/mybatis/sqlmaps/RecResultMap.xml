@@ -28,4 +28,8 @@
 	<select id="showRecResult" resultMap="RecResultDtoMap">
 		SELECT * FROM rec_result
 	</select>
+	
+	<select id="showRecDateResult" resultMap="RecResultDtoMap" parameterType="com.sanhak.hrsurvey.domain.RecResultDateDto">
+       SELECT * FROM rec_result rec where (select newhire_date from hireinfo, rec_result where hireinfo.serial_no = rec_result.serial_no) between #{fDate} and #{tDate};
+    </select>
 </mapper>

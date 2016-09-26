@@ -10,7 +10,7 @@ public class Excel {
 	private String BR_No;
 	private String Hire_Type;
 	private String ERBP;
-	private Date NewHire_Date;
+	private String NewHire_Date;
 	private String Hire_Manager_Name;
 	private String Hire_Manager_Band;
 	private String HM_ID;
@@ -55,11 +55,11 @@ public class Excel {
 		ERBP = eRBP;
 	}
 
-	public Date getNewHire_Date() {
+	public String getNewHire_Date() {
 		return NewHire_Date;
 	}
 
-	public void setNewHire_Date(Date newHire_Date) {
+	public void setNewHire_Date(String newHire_Date) {
 		NewHire_Date = newHire_Date;
 	}
 
@@ -146,7 +146,7 @@ public class Excel {
 	public Excel() {
 	}
 
-	public Excel(String serial_No, String bR_No, String hire_Type, String eRBP, Date newHire_Date,
+	public Excel(String serial_No, String bR_No, String hire_Type, String eRBP, String newHire_Date,
 			String hire_Manager_Name, String hire_Manager_Band, String hM_ID, String new_Hire_Name,
 			String new_Hire_Band, String new_Hire_ID, String recruiter_Name, String recruiter_Band,
 			String recruiter_ID) {

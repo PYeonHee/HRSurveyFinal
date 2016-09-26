@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sanhak.hrsurvey.dao.UploadDao;
 import com.sanhak.hrsurvey.domain.Excel;
+import com.sanhak.hrsurvey.domain.SurveyReminderDto;
 
 @Repository
 @Service
@@ -25,5 +26,10 @@ public class UploadDaoImpl implements UploadDao {
 	@Override
 	public void addExcel(List<Excel> list) {
 		sqlSession.insert(NAMESPACE + "addExcel", list);
+	}
+	@Override
+	public void addReminder(List<SurveyReminderDto> list) {
+		// TODO Auto-generated method stub
+		sqlSession.insert(NAMESPACE + "addReminder", list);
 	}
 }

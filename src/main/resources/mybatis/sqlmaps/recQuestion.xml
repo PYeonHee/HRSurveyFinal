@@ -3,19 +3,45 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    
 <mapper namespace="com.sanhak.hrsurvey.dao.RecQuestionDao">
-<!-- namespace에서 interface로 정의된 DAO를 정확히 명시해주어야 한다 -->
+<!-- namespace?먯꽌 interface濡??뺤쓽??DAO瑜??뺥솗??紐낆떆?댁＜?댁빞 ?쒕떎 -->
+
 <resultMap type="com.sanhak.hrsurvey.domain.RecQKr" id="RecQKrMap">
-      <result property="recQNum" column="REC_Q_Num" />
-      <result property="recQKr" column="REC_Q_KR" />
-   </resultMap>
-   <select id="showRecQKr" resultMap="RecQKrMap">
-      SELECT * FROM rec_question_kr
-   </select>
-   <resultMap type="com.sanhak.hrsurvey.domain.RecQEn" id="RecQEnMap">
-      <result property="recQNum" column="REC_Q_Num" />
-      <result property="recQEn" column="REC_Q_EN" />
-   </resultMap>
-   <select id="showRecQEn" resultMap="RecQEnMap">
-      SELECT * FROM rec_question_en
-   </select>
+	<result property="recQNum" column="REC_Q_Num" />
+	<result property="recQKr" column="REC_Q_KR" />
+	<result property="recQType" column="REC_Q_Type" />
+</resultMap>
+
+<resultMap type="com.sanhak.hrsurvey.domain.RecQEn" id="RecQEnMap">
+	<result property="recQNum" column="REC_Q_Num" />
+	<result property="recQEn" column="REC_Q_EN" />
+	<result property="recQType" column="REC_Q_Type" />
+</resultMap>
+
+<select id="showRecQKr" resultMap="RecQKrMap">
+	SELECT * FROM rec_question_kr
+</select>  
+<select id="showRecQEn" resultMap="RecQEnMap">
+	SELECT * FROM rec_question_en
+</select>
+<select id="cntRecQKr" resultType="int">
+	SELECT COUNT(*) FROM rec_question_kr
+</select> 
+<select id="cntRecQEn" resultType="int">
+	SELECT COUNT(*) FROM rec_question_en
+</select> 
+<delete id="delRecQKr">
+	DELETE FROM rec_question_kr
+</delete>
+<delete id="delRecQEn">
+	DELETE FROM rec_question_en
+</delete>
+<insert id="insertRecQKr" parameterType="java.util.List">
+	INSERT INTO rec_question_kr VALUES
+	<foreach item="item" index="index" collection="list" separator=",">(#{item.recQNum}, #{item.recQKr}, #{item.recQType})</foreach>
+</insert>
+<insert id="insertRecQEn" parameterType="java.util.List">
+	INSERT INTO rec_question_en VALUES
+	<foreach item="item" index="index" collection="list" separator=",">(#{item.recQNum}, #{item.recQEn}, #{item.recQType})</foreach>
+</insert>
+
 </mapper>

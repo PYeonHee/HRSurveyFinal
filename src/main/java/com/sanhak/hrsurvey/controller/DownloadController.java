@@ -13,8 +13,14 @@ import com.sanhak.hrsurvey.domain.UploadResDto;
 
 @Controller
 public class DownloadController {
-	@RequestMapping(value = "/DownExcel", method = RequestMethod.POST)
-	public String downLoading() {
-		return "ExcelDownloadView";
-	}
+	   @RequestMapping(value = "/DownResultExcel", method = RequestMethod.POST)
+	   public String resultDownLoading() {
+	      return "ResultExcelDownloadView";
+	   }
+	   
+	   @RequestMapping(value = "/DownFormExcel", method = RequestMethod.POST)
+	   public String ListFormDownLoading() {
+	      return "ListFormatExcelDownloadView";
+	   }
+
 }

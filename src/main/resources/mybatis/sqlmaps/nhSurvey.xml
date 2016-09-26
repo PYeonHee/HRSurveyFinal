@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sanhak.hrsurvey.dao.NhSurveyDao">
    <insert id="nhSrvyInsert" parameterType="com.sanhak.hrsurvey.domain.NhResultDto">
-      INSERT INTO NH_RESULT(Serial_No, NH_1, NH_2, NH_3, NH_4, NH_5, NH_6, NH_7, NH_8, NH_9, NH_10, NH_TEXT1, NH_TEXT2) 
-      VALUES("131172", #{NH1}, #{NH2}, #{NH3}, #{NH4}, #{NH5}, #{NH6}, #{NH7}, #{NH8}, #{NH9}, #{NH10}, #{NHText1}, #{NHText2})
+      INSERT INTO nh_result(Serial_No, NH_1, NH_2, NH_3, NH_4, NH_5, NH_6, NH_7, NH_8, NH_9, NH_10, NH_11, NH_12, NH_13, NH_14, NH_15, NH_TEXT1, NH_TEXT2) 
+      VALUES(#{serialNo}, #{NH1}, #{NH2}, #{NH3}, #{NH4}, #{NH5}, #{NH6}, #{NH7}, #{NH8}, #{NH9}, #{NH10}, #{NH11}, #{NH12}, #{NH13}, #{NH14}, #{NH15}, #{NHText1}, #{NHText2})
    </insert>
 </mapper>

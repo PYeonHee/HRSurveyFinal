@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanhak.hrsurvey.dao.HomeReminderDao">
+   <resultMap type="com.sanhak.hrsurvey.domain.HomeReminderDto" id="HomeReminderDtoMap">
+      <result property="newHireDate" column="newHireDate" />
+      <result property="serialNo" column="serialNo" />
+      <result property="newHireName" column="newHireName" />
+      <result property="hiringManagerName" column="hiringManagerName" />
+      <result property="recruiterName" column="recruiterName" />
+      <result property="newHireID" column="newHireID" />
+      <result property="hiringManagerID" column="hiringManagerID" />
+      <result property="recruiterID" column="recruiterID" />
+      <result property="mailDateNH" column="mailDateNH" />
+      <result property="mailDateHM" column="mailDateHM" />
+      <result property="mailDateREC" column="mailDateREC" />
+      <result property="resultCheckHM" column="resultCheckHM" />
+      <result property="resultCheckNH" column="resultCheckNH" />
+      <result property="resultCheckREC" column="resultCheckREC" />
+   </resultMap>
+   <select id="showHomeList" resultMap="HomeReminderDtoMap">
+      SELECT * FROM surveyreminder
+   </select>
+</mapper>

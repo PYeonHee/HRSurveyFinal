@@ -3,7 +3,13 @@ package com.sanhak.hrsurvey.domain;
 public class RecQEn {
 	private int recQNum;
 	private String recQEn;
-	
+	private String recQType;
+	public String getRecQType() {
+		return recQType;
+	}
+	public void setRecQType(String recQType) {
+		this.recQType = recQType;
+	}
 	public int getRecQNum() {
 		return recQNum;
 	}

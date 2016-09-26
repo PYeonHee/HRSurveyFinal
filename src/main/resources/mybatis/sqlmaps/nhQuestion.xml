@@ -3,19 +3,44 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sanhak.hrsurvey.dao.NhQuestionDao">
-   <!-- namespace에서 interface로 정의된 DAO를 정확히 명시해주어야 한다 -->
-   <resultMap type="com.sanhak.hrsurvey.domain.NhQKr" id="NhQKrMap">
-      <result property="nhQNum" column="NH_Q_Num" />
-      <result property="nhQKr" column="NH_Q_KR" />
-   </resultMap>
-   <select id="showNhQKr" resultMap="NhQKrMap">
-      SELECT * FROM nh_question_kr
-   </select>
-   <resultMap type="com.sanhak.hrsurvey.domain.NhQEn" id="NhQEnMap">
-      <result property="nhQNum" column="NH_Q_Num" />
-      <result property="nhQEn" column="NH_Q_EN" />
-   </resultMap>
-   <select id="showNhQEn" resultMap="NhQEnMap">
-      SELECT * FROM nh_question_en
-   </select>
+	<!-- namespace에서 interface로 정의된 DAO를 정확히 명시해주어야 한다 -->
+	<resultMap type="com.sanhak.hrsurvey.domain.NhQKr" id="NhQKrMap">
+		<result property="nhQNum" column="NH_Q_Num" />
+		<result property="nhQKr" column="NH_Q_KR" />
+		<result property="nhQType" column="NH_Q_Type" />
+	</resultMap>
+	<select id="showNhQKr" resultMap="NhQKrMap">
+		SELECT * FROM nh_question_kr
+	</select>
+	<resultMap type="com.sanhak.hrsurvey.domain.NhQEn" id="NhQEnMap">
+		<result property="nhQNum" column="NH_Q_Num" />
+		<result property="nhQEn" column="NH_Q_EN" />
+		<result property="nhQType" column="NH_Q_Type" />
+	</resultMap>
+	<select id="showNhQEn" resultMap="NhQEnMap">
+		SELECT * FROM nh_question_en
+	</select>
+	<select id="cntNhQKr" resultType="int">
+		SELECT COUNT(*) FROM nh_question_kr
+	</select>
+	<select id="cntNhQEn" resultType="int">
+		SELECT COUNT(*) FROM nh_question_en
+	</select>
+	<delete id="delNhQKr">
+		DELETE FROM nh_question_kr
+	</delete>
+	<delete id="delNhQEn">
+		DELETE FROM nh_question_en
+	</delete>
+	<insert id="insertNhQKr" parameterType="java.util.List">
+		INSERT INTO nh_question_kr VALUES
+		<foreach item="item" index="index" collection="list"
+			separator=",">(#{item.nhQNum}, #{item.nhQKr}, #{item.nhQType})</foreach>
+	</insert>
+	<insert id="insertNhQEn" parameterType="java.util.List">
+		INSERT INTO nh_question_en VALUES
+		<foreach item="item" index="index" collection="list"
+			separator=",">(#{item.nhQNum}, #{item.nhQEn}, #{item.nhQType})</foreach>
+	</insert>
+
 </mapper>
